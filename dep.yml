@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app1
+  labels:
+    app: app1
+spec:
+  selector:
+    matchLabels:
+      app: app1
+  template:
+    metadata:
+      labels:
+        app: app1
+    # ------- Pod Configuration -------
+    spec:
+      containers:
+      - name: app1
+        image: nginx:alpine
+        resources:
+          limits:
+            cpu: "2"
+            memory: "45Mi"
+          requests:
+            cpu: "1"
+        ports:
+          - containerPort: 80
